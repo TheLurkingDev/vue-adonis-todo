@@ -20,6 +20,18 @@ class ProjectController {
         return project;
     }
 
+    async update({ auth, request, params }) {
+        const user = await auth.getUser();
+        const project = await Project.find(params.id);
+
+        AuthorizationService.verifyPermission(project, user);
+
+        // await project.update(); Is there no support for this?
+        project.merge(request.only('title'));
+        await project.save();
+        return project;
+    }
+    
     async destroy({ auth, request, params }) {
         const user = await auth.getUser();        
         const project = await Project.find(params.id);
