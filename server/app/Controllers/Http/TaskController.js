@@ -18,7 +18,7 @@ class TaskController {
         const user = await auth.getUser();
         const { description } = request.all();
         const project = await Project.find(params.id);
-
+        
         AuthorizationService.verifyPermission(project, user);
 
         const task = new Task();
@@ -27,6 +27,33 @@ class TaskController {
         });
         
         await project.tasks().save(task);
+        return task;
+    }
+
+    async destroy({ auth, request, params }) {
+        const user = await auth.getUser();
+        const task = await Task.find(params.id);
+        const project = await task.project().fetch();
+        
+        AuthorizationService.verifyPermission(project, user);
+
+        await task.delete();
+        return task;
+    }
+
+    async update({ auth, request, params }) {
+        const user = await auth.getUser();
+        const task = await Task.find(params.id);
+        const project = await task.project().fetch();
+        
+        AuthorizationService.verifyPermission(project, user);
+
+        await task.merge(request.only([
+            'description',
+            'completed'
+        ]));
+
+        await task.save();
         return task;
     }
 }
