@@ -1,34 +1,7 @@
 <template>
   <v-app>
+    <Toolbar/>
     <div id="app">
-    <v-toolbar color="green" dark fixed>
-      <v-toolbar-title class="mr-4">VUE TODO</v-toolbar-title>
-      <v-toolbar-items>
-        <v-btn flat>
-          <v-icon class="mr-2">playlist_add_check</v-icon>
-          Projects
-        </v-btn>
-      </v-toolbar-items>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>
-          <v-icon class="mr-2">account_box</v-icon>
-          Register
-        </v-btn>
-        <v-btn flat>
-          <v-icon class="mr-2">fingerprint</v-icon>
-          Login
-        </v-btn>
-        <v-btn flat>
-          <v-icon class="mr-2">exit_to_app</v-icon>
-          Logout
-        </v-btn>
-        <v-btn flat>
-          <v-icon class="mr-2">ondemand_video</v-icon>
-          How This Was Made
-        </v-btn>
-      </v-toolbar-items>
-  </v-toolbar>
       <div id="nav">
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
@@ -37,6 +10,17 @@
     </div>
   </v-app>
 </template>
+
+<script>
+import Toolbar from '@/components/Toolbar.vue';
+
+export default {
+  components: {
+    Toolbar,
+  },
+};
+</script>
+
 
 <style lang="scss">
 #app {
