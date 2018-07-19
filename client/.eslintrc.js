@@ -16,6 +16,8 @@ module.exports = {
     'max-len': 0,
     'arrow-body-style': 0,
     'eol-last': 0,
+    'no-trailing-spaces': 0,
+    'consistent-return': 0,
   },
   parserOptions: {
     parser: 'babel-eslint'
