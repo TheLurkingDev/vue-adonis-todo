@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 
 import authentication from './authentication';
 import projects from './projects';
+import tasks from './tasks';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   modules: {
     authentication, // Allows this to be accessed from action and mutations within Vue components.
     projects,
+    tasks,
   },
   mutations: {
 
